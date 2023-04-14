@@ -2,7 +2,7 @@
 - 👀 I’m interested in AI and Machine Learning
 - 🌱 I’m currently learning AI and Machine Learning
 - 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me Wechat: andy200195
+- 📫 How to reach me: liqingan@pass3exceed4.com
 
 <!---
 muzian666/muzian666 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
