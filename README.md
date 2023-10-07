@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @muzian666
 - 👀 I’m interested in AI and Machine Learning
-- 🌱 I’m currently learning AI and Machine Learning
+- 🌱 I’m currently learning AI / Machine Learning / Large Language Model
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me: liqingan@pass3exceed4.com
 
