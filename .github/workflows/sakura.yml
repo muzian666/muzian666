@@ -1,0 +1,73 @@
+name: Generate Sakura SVG
+
+on:
+  schedule:
+    - cron: "0 0 * * 6"  # runs weekly on Saturday
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate Sakura SVG
+        run: |
+          cat > dist/sakura.svg << 'SVGEOF'
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+            <defs>
+              <style>
+                @keyframes fall1 { 0%{transform:translate(0,-20px) rotate(0deg);opacity:1} 100%{transform:translate(80px,220px) rotate(720deg);opacity:0} }
+                @keyframes fall2 { 0%{transform:translate(0,-20px) rotate(0deg);opacity:1} 100%{transform:translate(-60px,220px) rotate(540deg);opacity:0} }
+                @keyframes fall3 { 0%{transform:translate(0,-20px) rotate(0deg);opacity:1} 100%{transform:translate(40px,220px) rotate(600deg);opacity:0} }
+                @keyframes sway { 0%,100%{transform:translateX(0)} 50%{transform:translateX(15px)} }
+                .p1{animation:fall1 6s ease-in-out infinite}
+                .p2{animation:fall2 8s ease-in-out infinite 1s}
+                .p3{animation:fall3 7s ease-in-out infinite 2s}
+                .p4{animation:fall1 9s ease-in-out infinite 3s}
+                .p5{animation:fall2 5s ease-in-out infinite 0.5s}
+                .p6{animation:fall3 6s ease-in-out infinite 1.5s}
+                .p7{animation:fall1 7s ease-in-out infinite 2.5s}
+                .p8{animation:fall2 8s ease-in-out infinite 4s}
+                .p9{animation:fall3 6s ease-in-out infinite 3.5s}
+                .p10{animation:fall1 9s ease-in-out infinite 5s}
+              </style>
+            </defs>
+            <rect width="800" height="200" fill="none"/>
+            <!-- Petal template -->
+            <g id="petal">
+              <ellipse cx="0" cy="0" rx="7" ry="4" fill="#FFB7C5" opacity="0.8"/>
+              <ellipse cx="5" cy="-2" rx="6" ry="3.5" fill="#FF9EB5" opacity="0.6"/>
+              <ellipse cx="-3" cy="3" rx="6" ry="3" fill="#FFC0CB" opacity="0.7"/>
+              <ellipse cx="2" cy="4" rx="5" ry="3" fill="#FFD1DC" opacity="0.5"/>
+              <circle cx="0" cy="1" r="2" fill="#FF69B4" opacity="0.4"/>
+            </g>
+            <!-- Falling petals -->
+            <use href="#petal" class="p1" x="100" y="10"/>
+            <use href="#petal" class="p2" x="200" y="30"/>
+            <use href="#petal" class="p3" x="300" y="5"/>
+            <use href="#petal" class="p4" x="400" y="25"/>
+            <use href="#petal" class="p5" x="500" y="15"/>
+            <use href="#petal" class="p6" x="600" y="8"/>
+            <use href="#petal" class="p7" x="700" y="20"/>
+            <use href="#petal" class="p8" x="150" y="40"/>
+            <use href="#petal" class="p9" x="350" y="35"/>
+            <use href="#petal" class="p10" x="550" y="12"/>
+            <!-- Title text with glow -->
+            <text x="400" y="110" text-anchor="middle" font-family="Georgia,serif" font-size="48" font-weight="bold" fill="#D63384" opacity="0.9">
+              &#x2726; Hello, I'm Muzian &#x2726;
+            </text>
+            <text x="400" y="145" text-anchor="middle" font-family="Georgia,serif" font-size="18" fill="#C94080" opacity="0.7">
+              AI &amp; Machine Learning Enthusiast
+            </text>
+          </svg>
+          SVGEOF
+
+      - name: Push to output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
