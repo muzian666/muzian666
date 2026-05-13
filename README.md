@@ -65,11 +65,6 @@
   <img alt="github-snake" src="https://raw.githubusercontent.com/muzian666/muzian666/output/github-snake.svg" />
 </picture>
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=muzian666&show_icons=true&theme=gruvbox&hide_border=true" width="49%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=muzian666&layout=compact&theme=gruvbox&hide_border=true" width="49%" />
-</p>
-
 ---
 
 <div align="center">
